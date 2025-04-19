@@ -11,6 +11,9 @@ const burgerSlice = createSlice({
     reducers:{
         orderBurger:(state)=>{
             state.burger_buns--;
+        },
+        customerChoice:(state, action)=>{
+            state.burger_buns -= action.payload
         }
     },
     extraReducers:(builder)=>{
@@ -21,4 +24,4 @@ const burgerSlice = createSlice({
 })
 
 export default burgerSlice.reducer;
-export const {orderBurger} = burgerSlice.actions;
+export const {orderBurger, customerChoice} = burgerSlice.actions;
