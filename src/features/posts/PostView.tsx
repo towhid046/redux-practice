@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchPosts, fetchSinglePost } from "./fetchPosts"
+import { fetchDeletePost, fetchPosts, fetchSinglePost, fetchUpdatePost } from "./fetchPosts"
 
 const PostView = () => {
     const [isDetailsShow, setIsDetailsShow] = useState<boolean>(false)
     const { posts, loading, error, post } = useSelector(state => state.posts)
     const dispatch = useDispatch()
-
-    console.log(post)
 
     useEffect(() => {
         dispatch(fetchPosts());
@@ -22,16 +20,43 @@ const PostView = () => {
         handleLoadSinglePost(id)
     }
 
+    const handleDeletePost = (id: number) => {
+        dispatch(fetchDeletePost(id))
+    }
+
+    const handleUpdatePost = (id: number) => {
+        dispatch(fetchUpdatePost({
+            id,
+            data: {
+                title: 'Hello Update'
+            }
+        }))
+    }
+
 
     return (
         <>
-            <div className="border border-gray-300 p-5 rounded-md grid grid-cols-5 gap-5">
+            <div className="border border-gray-300 p-5 rounded-md grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                 {posts.length && posts?.map(post => (
                     <div key={post.id} className="p-5 border rounded-md border-gray-200 flex flex-col justify-between gap-4">
                         <p>{post.title || ''}</p>
-                        <button
-                            onClick={() => viewDetailsButtonHandler(post.id)}
-                            className="cursor-pointer py-1.5 px-3 text-white bg-blue-400 rounded-md ">View Details</button>
+                        <div className="flex gap-3 items-center flex-wrap">
+                            <button
+                                onClick={() => viewDetailsButtonHandler(post.id)}
+                                className="cursor-pointer py-1.5 text-xs px-3 text-white bg-blue-400 rounded-md ">
+                                View Details
+                            </button>
+                            <button
+                                onClick={() => handleDeletePost(post.id)}
+                                className="cursor-pointer text-xs py-1.5 px-3 text-white bg-red-400 rounded-md ">
+                                Delete Post
+                            </button>
+                            <button
+                                onClick={() => handleUpdatePost(post.id)}
+                                className="cursor-pointer text-xs py-1.5 px-3 text-white bg-green-400 rounded-md ">
+                                Update Post
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
