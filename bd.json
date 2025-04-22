@@ -1,12 +1,9 @@
 {
   "books": [
     {
+      "id": "7",
       "title": "Hello Update",
-      "id": "2"
-    },
-    {
-      "title": "Hello Update",
-      "id": "7"
+      "body": "A haunted relic wreaks havoc across a sleepy town."
     },
     {
       "id": "8",
@@ -25,7 +22,7 @@
     },
     {
       "id": "11",
-      "title": "The Iron Pact",
+      "title": "Hello Update",
       "body": "Warring kingdoms unite against a common enemy."
     },
     {
@@ -50,7 +47,7 @@
     },
     {
       "id": "16",
-      "title": "The Glass Compass",
+      "title": "Book Updated",
       "body": "A magical compass leads its bearer on a quest for truth."
     },
     {
@@ -60,7 +57,7 @@
     },
     {
       "id": "18",
-      "title": "Dawn of Shadows",
+      "title": "Book Updated",
       "body": "A chosen one emerges in a world engulfed by darkness."
     }
   ]

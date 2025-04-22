@@ -5,7 +5,7 @@ import { customerChoice, orderBurger } from "./burgerSlice";
 const BurgerView = () => {
     const burgerBuns = useSelector((state) => state?.burger);
     const dispatch = useDispatch()
-    const [inputCount, setInputCount] = useState<number>(1)
+    const [inputCount, setInputCount] = useState(1)
 
     return (
         <div className="w-full rounded-md border p-12 flex justify-center items-center flex-col mx-auto border-gray-300">

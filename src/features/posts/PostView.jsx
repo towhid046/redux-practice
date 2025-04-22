@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchDeletePost, fetchPosts, fetchSinglePost, fetchUpdatePost } from "./fetchPosts"
 
 const PostView = () => {
-    const [isDetailsShow, setIsDetailsShow] = useState<boolean>(false)
+    const [isDetailsShow, setIsDetailsShow] = useState(false)
     const { posts, loading, error, post } = useSelector(state => state.posts)
     const dispatch = useDispatch()
 
@@ -11,20 +11,20 @@ const PostView = () => {
         dispatch(fetchPosts());
     }, [dispatch])
 
-    const handleLoadSinglePost = (id: number) => {
+    const handleLoadSinglePost = (id) => {
         dispatch(fetchSinglePost(id));
     }
 
-    const viewDetailsButtonHandler = (id: number) => {
+    const viewDetailsButtonHandler = (id) => {
         setIsDetailsShow(true)
         handleLoadSinglePost(id)
     }
 
-    const handleDeletePost = (id: number) => {
+    const handleDeletePost = (id) => {
         dispatch(fetchDeletePost(id))
     }
 
-    const handleUpdatePost = (id: number) => {
+    const handleUpdatePost = (id) => {
         dispatch(fetchUpdatePost({
             id,
             data: {
@@ -36,6 +36,7 @@ const PostView = () => {
 
     return (
         <>
+        <h2 className="text-2xl font-semibold text-center underline mb-5">Post View</h2>
             <div className="border border-gray-300 p-5 rounded-md grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                 {posts.length && posts?.map(post => (
                     <div key={post.id} className="p-5 border rounded-md border-gray-200 flex flex-col justify-between gap-4">
